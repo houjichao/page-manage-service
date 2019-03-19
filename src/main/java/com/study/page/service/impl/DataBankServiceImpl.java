@@ -52,7 +52,7 @@ public class DataBankServiceImpl implements DataBankService {
 
     @Override
     public String downloadFile(String fileName, HttpServletResponse response) {
-        String filePath = " /data/workspace/temp/";
+        String filePath = "data/workspace/temp/";
         return fileUtil.download(fileName, filePath, response);
     }
 }

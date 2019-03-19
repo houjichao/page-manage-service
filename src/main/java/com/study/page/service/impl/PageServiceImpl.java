@@ -57,7 +57,7 @@ public class PageServiceImpl implements PageService {
 
     @Override
     public String downloadFile(String fileName, HttpServletResponse response) {
-        String filePath = " /page/workspace/temp/";
+        String filePath = "page/workspace/temp/";
         return fileUtil.download(fileName, filePath, response);
     }
 

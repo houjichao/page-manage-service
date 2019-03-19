@@ -18,13 +18,11 @@ public class AnswerQuestionsController {
     @Autowired
     AnswerQuestionsService answerQuestionsService;
 
-
     @ApiOperation(value = "新增问题")
     @PostMapping(value = "/add")
     public String saveQuestion(@RequestBody PmsAnswerQuestions answerQuestions) {
         return answerQuestionsService.mergeQuestion(answerQuestions);
     }
-
 
     @ApiOperation(value = "修改问题，回答")
     @PostMapping(value = "/update")
@@ -32,13 +30,11 @@ public class AnswerQuestionsController {
         return answerQuestionsService.mergeQuestion(answerQuestions);
     }
 
-
     @ApiOperation(value = "查询问题")
     @GetMapping(value = "/get/{id}")
     public PmsAnswerQuestions queryQuestion(@PathVariable String id) {
         return answerQuestionsService.queryQuestionById(id);
     }
-
 
     @ApiOperation(value = "删除问题")
     @DeleteMapping(value = "/del/{id}")

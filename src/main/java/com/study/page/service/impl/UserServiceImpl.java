@@ -9,6 +9,7 @@ import liquibase.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
     PmsUserMapper userMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String mergeUser(PmsUser user) {
         //密码两次MD5加密入库
         user.setPassword(MD5Util.computeMD5(user.getPassword()));

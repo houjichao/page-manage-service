@@ -7,6 +7,7 @@ import com.study.page.util.FileUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,7 @@ public class DataBankServiceImpl implements DataBankService {
     FileUtil fileUtil;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String mergeData(PmsDataBank dataBank) {
         if (StringUtils.isBlank(dataBank.getId())) {
             dataBank.setId(UUID.randomUUID().toString());

@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,7 @@ public class PageServiceImpl implements PageService {
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String mergePage(PmsPage page) {
         if (StringUtils.isBlank(page.getId())) {
             page.setId(UUID.randomUUID().toString());

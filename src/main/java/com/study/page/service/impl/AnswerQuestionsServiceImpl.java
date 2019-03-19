@@ -6,6 +6,7 @@ import com.study.page.service.AnswerQuestionsService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class AnswerQuestionsServiceImpl implements AnswerQuestionsService {
     PmsAnswerQuestionsMapper pmsAnswerQuestionsMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String mergeQuestion(PmsAnswerQuestions pmsAnswerQuestions) {
         if (StringUtils.isBlank(pmsAnswerQuestions.getId())) {
             pmsAnswerQuestions.setId(UUID.randomUUID().toString());

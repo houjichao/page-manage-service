@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsTopicsMapper">
+  <resultMap id="BaseResultMap" type="com.study.page.model.PmsTopics">
+    <id column="id_" jdbcType="CHAR" property="id" />
+    <result column="title_" jdbcType="VARCHAR" property="title" />
+    <result column="intro_" jdbcType="VARCHAR" property="intro" />
+    <result column="teacher_id_" jdbcType="VARCHAR" property="teacherId" />
+    <result column="add_time_" jdbcType="BIGINT" property="addTime" />
+    <result column="comment_" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_, title_, intro_, teacher_id_, add_time_, comment_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_topics
+    where id_ = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pms_topics
+    where id_ = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.page.model.PmsTopics">
+    insert into pms_topics (id_, title_, intro_, 
+      teacher_id_, add_time_, comment_
+      )
+    values (#{id,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{teacherId,jdbcType=VARCHAR}, #{addTime,jdbcType=BIGINT}, #{comment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.page.model.PmsTopics">
+    insert into pms_topics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id_,
+      </if>
+      <if test="title != null">
+        title_,
+      </if>
+      <if test="intro != null">
+        intro_,
+      </if>
+      <if test="teacherId != null">
+        teacher_id_,
+      </if>
+      <if test="addTime != null">
+        add_time_,
+      </if>
+      <if test="comment != null">
+        comment_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=BIGINT},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.page.model.PmsTopics">
+    update pms_topics
+    <set>
+      <if test="title != null">
+        title_ = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        intro_ = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        teacher_id_ = #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time_ = #{addTime,jdbcType=BIGINT},
+      </if>
+      <if test="comment != null">
+        comment_ = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.page.model.PmsTopics">
+    update pms_topics
+    set title_ = #{title,jdbcType=VARCHAR},
+      intro_ = #{intro,jdbcType=VARCHAR},
+      teacher_id_ = #{teacherId,jdbcType=VARCHAR},
+      add_time_ = #{addTime,jdbcType=BIGINT},
+      comment_ = #{comment,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

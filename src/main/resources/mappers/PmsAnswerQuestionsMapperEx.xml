@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsAnswerQuestionsMapper">
+    <!--查询所有的问题-->
+    <select id="queryAllQuestion" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from pms_answer_questions
+    </select>
+
+    <!--根据学生id查询问题-->
+    <select id="queryQuestionByStudentId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_answer_questions where student_id_ = #{studentId,jdbcType=CHAR}
+    </select>
+
+    <!--根据学生id查询问题-->
+    <select id="queryQuestionByTeacherId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_answer_questions where teacher_id_ = #{teacherId,jdbcType=CHAR}
+    </select>
+
+</mapper>

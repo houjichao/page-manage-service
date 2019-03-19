@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsPageMapper">
+  <resultMap id="BaseResultMap" type="com.study.page.model.PmsPage">
+    <id column="id_" jdbcType="CHAR" property="id" />
+    <result column="college_name_" jdbcType="VARCHAR" property="collegeName" />
+    <result column="page_author_" jdbcType="VARCHAR" property="pageAuthor" />
+    <result column="page_name_" jdbcType="VARCHAR" property="pageName" />
+    <result column="teacher_id_" jdbcType="VARCHAR" property="teacherId" />
+    <result column="student_no_" jdbcType="VARCHAR" property="studentNo" />
+    <result column="save_path_" jdbcType="VARCHAR" property="savePath" />
+    <result column="comment_" jdbcType="VARCHAR" property="comment" />
+    <result column="score_" jdbcType="DOUBLE" property="score" />
+    <result column="reviewer_comment_" jdbcType="VARCHAR" property="reviewerComment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_, college_name_, page_author_, page_name_, teacher_id_, student_no_, save_path_, 
+    comment_, score_, reviewer_comment_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_page
+    where id_ = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pms_page
+    where id_ = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.page.model.PmsPage">
+    insert into pms_page (id_, college_name_, page_author_, 
+      page_name_, teacher_id_, student_no_, 
+      save_path_, comment_, score_, 
+      reviewer_comment_)
+    values (#{id,jdbcType=CHAR}, #{collegeName,jdbcType=VARCHAR}, #{pageAuthor,jdbcType=VARCHAR}, 
+      #{pageName,jdbcType=VARCHAR}, #{teacherId,jdbcType=VARCHAR}, #{studentNo,jdbcType=VARCHAR}, 
+      #{savePath,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, #{score,jdbcType=DOUBLE}, 
+      #{reviewerComment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.page.model.PmsPage">
+    insert into pms_page
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id_,
+      </if>
+      <if test="collegeName != null">
+        college_name_,
+      </if>
+      <if test="pageAuthor != null">
+        page_author_,
+      </if>
+      <if test="pageName != null">
+        page_name_,
+      </if>
+      <if test="teacherId != null">
+        teacher_id_,
+      </if>
+      <if test="studentNo != null">
+        student_no_,
+      </if>
+      <if test="savePath != null">
+        save_path_,
+      </if>
+      <if test="comment != null">
+        comment_,
+      </if>
+      <if test="score != null">
+        score_,
+      </if>
+      <if test="reviewerComment != null">
+        reviewer_comment_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="collegeName != null">
+        #{collegeName,jdbcType=VARCHAR},
+      </if>
+      <if test="pageAuthor != null">
+        #{pageAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="pageName != null">
+        #{pageName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNo != null">
+        #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="savePath != null">
+        #{savePath,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewerComment != null">
+        #{reviewerComment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.page.model.PmsPage">
+    update pms_page
+    <set>
+      <if test="collegeName != null">
+        college_name_ = #{collegeName,jdbcType=VARCHAR},
+      </if>
+      <if test="pageAuthor != null">
+        page_author_ = #{pageAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="pageName != null">
+        page_name_ = #{pageName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        teacher_id_ = #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNo != null">
+        student_no_ = #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="savePath != null">
+        save_path_ = #{savePath,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment_ = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score_ = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewerComment != null">
+        reviewer_comment_ = #{reviewerComment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.page.model.PmsPage">
+    update pms_page
+    set college_name_ = #{collegeName,jdbcType=VARCHAR},
+      page_author_ = #{pageAuthor,jdbcType=VARCHAR},
+      page_name_ = #{pageName,jdbcType=VARCHAR},
+      teacher_id_ = #{teacherId,jdbcType=VARCHAR},
+      student_no_ = #{studentNo,jdbcType=VARCHAR},
+      save_path_ = #{savePath,jdbcType=VARCHAR},
+      comment_ = #{comment,jdbcType=VARCHAR},
+      score_ = #{score,jdbcType=DOUBLE},
+      reviewer_comment_ = #{reviewerComment,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsAnswerQuestionsMapper">
+  <resultMap id="BaseResultMap" type="com.study.page.model.PmsAnswerQuestions">
+    <id column="id_" jdbcType="CHAR" property="id" />
+    <result column="question_name_" jdbcType="VARCHAR" property="questionName" />
+    <result column="student_id_" jdbcType="VARCHAR" property="studentId" />
+    <result column="answer_" jdbcType="VARCHAR" property="answer" />
+    <result column="teacher_id_" jdbcType="VARCHAR" property="teacherId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_, question_name_, student_id_, answer_, teacher_id_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_answer_questions
+    where id_ = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pms_answer_questions
+    where id_ = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.page.model.PmsAnswerQuestions">
+    insert into pms_answer_questions (id_, question_name_, student_id_, 
+      answer_, teacher_id_)
+    values (#{id,jdbcType=CHAR}, #{questionName,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=VARCHAR}, #{teacherId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.page.model.PmsAnswerQuestions">
+    insert into pms_answer_questions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id_,
+      </if>
+      <if test="questionName != null">
+        question_name_,
+      </if>
+      <if test="studentId != null">
+        student_id_,
+      </if>
+      <if test="answer != null">
+        answer_,
+      </if>
+      <if test="teacherId != null">
+        teacher_id_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="questionName != null">
+        #{questionName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.page.model.PmsAnswerQuestions">
+    update pms_answer_questions
+    <set>
+      <if test="questionName != null">
+        question_name_ = #{questionName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        student_id_ = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        answer_ = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        teacher_id_ = #{teacherId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.page.model.PmsAnswerQuestions">
+    update pms_answer_questions
+    set question_name_ = #{questionName,jdbcType=VARCHAR},
+      student_id_ = #{studentId,jdbcType=VARCHAR},
+      answer_ = #{answer,jdbcType=VARCHAR},
+      teacher_id_ = #{teacherId,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

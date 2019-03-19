@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsDataBankMapper">
+  <resultMap id="BaseResultMap" type="com.study.page.model.PmsDataBank">
+    <id column="id_" jdbcType="CHAR" property="id" />
+    <result column="name_" jdbcType="VARCHAR" property="name" />
+    <result column="save_path_" jdbcType="VARCHAR" property="savePath" />
+    <result column="comment_" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_, name_, save_path_, comment_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_data_bank
+    where id_ = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pms_data_bank
+    where id_ = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.page.model.PmsDataBank">
+    insert into pms_data_bank (id_, name_, save_path_, 
+      comment_)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{savePath,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.page.model.PmsDataBank">
+    insert into pms_data_bank
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id_,
+      </if>
+      <if test="name != null">
+        name_,
+      </if>
+      <if test="savePath != null">
+        save_path_,
+      </if>
+      <if test="comment != null">
+        comment_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="savePath != null">
+        #{savePath,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.page.model.PmsDataBank">
+    update pms_data_bank
+    <set>
+      <if test="name != null">
+        name_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="savePath != null">
+        save_path_ = #{savePath,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment_ = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.page.model.PmsDataBank">
+    update pms_data_bank
+    set name_ = #{name,jdbcType=VARCHAR},
+      save_path_ = #{savePath,jdbcType=VARCHAR},
+      comment_ = #{comment,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

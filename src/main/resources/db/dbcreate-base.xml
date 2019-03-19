@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="page-20190317-1" author="houjichao" context="base">
+        <sql>
+            <comment>数据库创建</comment>
+            Create Database If Not Exists `page` Character Set UTF8;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

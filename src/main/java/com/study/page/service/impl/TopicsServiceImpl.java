@@ -1,0 +1,44 @@
+package com.study.page.service.impl;
+
+import com.study.page.mapper.PmsTopicsMapper;
+import com.study.page.model.PmsTopics;
+import com.study.page.service.TopicsService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+
+@Service
+public class TopicsServiceImpl implements TopicsService {
+    @Autowired
+    PmsTopicsMapper pmsTopicsMapper;
+
+    @Override
+    public String mergeTopics(PmsTopics topics) {
+        if (StringUtils.isEmpty(topics.getId())){
+            topics.setId(UUID.randomUUID().toString());
+            pmsTopicsMapper.insert(topics);
+        }else{
+            pmsTopicsMapper.updateByPrimaryKeySelective(topics);
+        }
+        return topics.getId();
+    }
+
+    @Override
+    public PmsTopics queryTopicsById(String id) {
+        return pmsTopicsMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<PmsTopics> queryAllTopics() {
+        return pmsTopicsMapper.queryAllTopics();
+    }
+
+    @Override
+    public Boolean delTopics(String id) {
+        pmsTopicsMapper.deleteByPrimaryKey(id);
+        return true;
+    }
+}

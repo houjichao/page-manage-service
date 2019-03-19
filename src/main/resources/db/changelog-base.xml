@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="page-20190317-1" author="houjichao" context="base">
+        <sql>
+            DROP TABLE IF EXISTS `pms_user`;
+            CREATE TABLE `pms_user` (
+            `id_` char(36) NOT NULL COMMENT '用户表ID，唯一标识',
+            `login_name_` varchar(20) NOT NULL COMMENT '用户登录名',
+            `name_` varchar(20) DEFAULT NULL COMMENT '用户姓名',
+            `pinyin_` varchar(100) DEFAULT NULL COMMENT '用户姓名拼音',
+            `acronym_` varchar(20) DEFAULT NULL COMMENT '用户拼音首字母',
+            `email_` varchar(36) DEFAULT NULL COMMENT '用户电子邮箱，可用于登录',
+            `phone_no_` varchar(16) DEFAULT NULL COMMENT '用户手机号，可用于登录',
+            `password_` varchar(36) DEFAULT NULL COMMENT '密码',
+            `id_card_number_` varchar(36) DEFAULT NULL COMMENT '用户证件号',
+            `gender_` int(2) DEFAULT NULL COMMENT '用户性别',
+            `user_type_` int(4) DEFAULT NULL COMMENT '用户类型',
+            `user_org_` varchar(36) DEFAULT NULL COMMENT '用户组织ID',
+            `status_` int(4) DEFAULT NULL COMMENT '状态',
+            `register_time_` bigint(13) DEFAULT NULL COMMENT '注册时间',
+            `page_id_` bigint(13) DEFAULT NULL COMMENT '论文编号',
+            PRIMARY KEY (`id_`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+
+
+    <changeSet id="page-20190317-2" author="houjichao" context="base">
+        <sql>
+            DROP TABLE IF EXISTS `pms_page`;
+            CREATE TABLE `pms_page` (
+            `id_` char(36) NOT NULL COMMENT '论文编号',
+            `college_name_` varchar(20) NOT NULL COMMENT '学院名称',
+            `page_author_` varchar(20) DEFAULT NULL COMMENT '论文',
+            `page_name_` varchar(100) DEFAULT NULL COMMENT '论文名称',
+            `teacher_id_` varchar(20) DEFAULT NULL COMMENT '教师编号',
+            `student_no_` varchar(36) DEFAULT NULL COMMENT '学生编号',
+            `save_path_` varchar(36) DEFAULT NULL COMMENT '论文保存路径',
+            `comment_` varchar(256) DEFAULT NULL COMMENT '备注',
+            `score_` double DEFAULT NULL COMMENT '论文评分',
+            `reviewer_comment_` varchar(256) NULL COMMENT '评审意见',
+            PRIMARY KEY (`id_`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+
+    <changeSet id="page-20190317-3" author="houjichao" context="base">
+        <sql>
+            DROP TABLE IF EXISTS `pms_topics`;
+            CREATE TABLE `pms_topics` (
+            `id_` char(36) NOT NULL COMMENT '选题编号',
+            `title_` varchar(20) NOT NULL COMMENT '选题标题',
+            `intro_` varchar(256) DEFAULT NULL COMMENT '选题简介',
+            `teacher_id_` varchar(100) DEFAULT NULL COMMENT '选题来源',
+            `add_time_` bigint(13) DEFAULT NULL COMMENT '教师编号',
+            `comment_` varchar(256) DEFAULT NULL COMMENT '备注',
+            PRIMARY KEY (`id_`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+
+    <changeSet id="page-20190317-4" author="houjichao" context="base">
+        <sql>
+            DROP TABLE IF EXISTS `pms_data_bank`;
+            CREATE TABLE `pms_data_bank` (
+            `id_` char(36) NOT NULL COMMENT '资料文章编号',
+            `name_` varchar(20) NOT NULL COMMENT '资料文章名称',
+            `save_path_` varchar(36) DEFAULT NULL COMMENT '资料保存路径',
+            `comment_` varchar(256) DEFAULT NULL COMMENT '备注',
+            PRIMARY KEY (`id_`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+
+    <changeSet id="page-20190317-5" author="houjichao" context="base">
+        <sql>
+            DROP TABLE IF EXISTS `pms_answer_questions`;
+            CREATE TABLE `pms_answer_questions` (
+            `id_` char(36) NOT NULL COMMENT '问题唯一标识',
+            `question_name_` varchar(100) NOT NULL COMMENT '问题名称',
+            `student_id_` varchar(36) DEFAULT NULL COMMENT '学生id',
+            `answer_` varchar(512) DEFAULT NULL COMMENT '问题解答',
+            `teacher_id_` varchar(36) DEFAULT NULL COMMENT '教师id',
+            PRIMARY KEY (`id_`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+
+
+
+</databaseChangeLog>

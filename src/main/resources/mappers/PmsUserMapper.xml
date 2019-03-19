@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsUserMapper">
+  <resultMap id="BaseResultMap" type="com.study.page.model.PmsUser">
+    <id column="id_" jdbcType="CHAR" property="id" />
+    <result column="login_name_" jdbcType="VARCHAR" property="loginName" />
+    <result column="name_" jdbcType="VARCHAR" property="name" />
+    <result column="pinyin_" jdbcType="VARCHAR" property="pinyin" />
+    <result column="acronym_" jdbcType="VARCHAR" property="acronym" />
+    <result column="email_" jdbcType="VARCHAR" property="email" />
+    <result column="phone_no_" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="password_" jdbcType="VARCHAR" property="password" />
+    <result column="id_card_number_" jdbcType="VARCHAR" property="idCardNumber" />
+    <result column="gender_" jdbcType="INTEGER" property="gender" />
+    <result column="user_type_" jdbcType="INTEGER" property="userType" />
+    <result column="user_org_" jdbcType="VARCHAR" property="userOrg" />
+    <result column="status_" jdbcType="INTEGER" property="status" />
+    <result column="register_time_" jdbcType="BIGINT" property="registerTime" />
+    <result column="page_id_" jdbcType="BIGINT" property="pageId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_, login_name_, name_, pinyin_, acronym_, email_, phone_no_, password_, id_card_number_, 
+    gender_, user_type_, user_org_, status_, register_time_, page_id_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_user
+    where id_ = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pms_user
+    where id_ = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.page.model.PmsUser">
+    insert into pms_user (id_, login_name_, name_, 
+      pinyin_, acronym_, email_, 
+      phone_no_, password_, id_card_number_, 
+      gender_, user_type_, user_org_, 
+      status_, register_time_, page_id_
+      )
+    values (#{id,jdbcType=CHAR}, #{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{pinyin,jdbcType=VARCHAR}, #{acronym,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{phoneNo,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{idCardNumber,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{userType,jdbcType=INTEGER}, #{userOrg,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{registerTime,jdbcType=BIGINT}, #{pageId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.page.model.PmsUser">
+    insert into pms_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id_,
+      </if>
+      <if test="loginName != null">
+        login_name_,
+      </if>
+      <if test="name != null">
+        name_,
+      </if>
+      <if test="pinyin != null">
+        pinyin_,
+      </if>
+      <if test="acronym != null">
+        acronym_,
+      </if>
+      <if test="email != null">
+        email_,
+      </if>
+      <if test="phoneNo != null">
+        phone_no_,
+      </if>
+      <if test="password != null">
+        password_,
+      </if>
+      <if test="idCardNumber != null">
+        id_card_number_,
+      </if>
+      <if test="gender != null">
+        gender_,
+      </if>
+      <if test="userType != null">
+        user_type_,
+      </if>
+      <if test="userOrg != null">
+        user_org_,
+      </if>
+      <if test="status != null">
+        status_,
+      </if>
+      <if test="registerTime != null">
+        register_time_,
+      </if>
+      <if test="pageId != null">
+        page_id_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="acronym != null">
+        #{acronym,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNumber != null">
+        #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="userOrg != null">
+        #{userOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=BIGINT},
+      </if>
+      <if test="pageId != null">
+        #{pageId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.page.model.PmsUser">
+    update pms_user
+    <set>
+      <if test="loginName != null">
+        login_name_ = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        pinyin_ = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="acronym != null">
+        acronym_ = #{acronym,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email_ = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        phone_no_ = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password_ = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNumber != null">
+        id_card_number_ = #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender_ = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type_ = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="userOrg != null">
+        user_org_ = #{userOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status_ = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="registerTime != null">
+        register_time_ = #{registerTime,jdbcType=BIGINT},
+      </if>
+      <if test="pageId != null">
+        page_id_ = #{pageId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.page.model.PmsUser">
+    update pms_user
+    set login_name_ = #{loginName,jdbcType=VARCHAR},
+      name_ = #{name,jdbcType=VARCHAR},
+      pinyin_ = #{pinyin,jdbcType=VARCHAR},
+      acronym_ = #{acronym,jdbcType=VARCHAR},
+      email_ = #{email,jdbcType=VARCHAR},
+      phone_no_ = #{phoneNo,jdbcType=VARCHAR},
+      password_ = #{password,jdbcType=VARCHAR},
+      id_card_number_ = #{idCardNumber,jdbcType=VARCHAR},
+      gender_ = #{gender,jdbcType=INTEGER},
+      user_type_ = #{userType,jdbcType=INTEGER},
+      user_org_ = #{userOrg,jdbcType=VARCHAR},
+      status_ = #{status,jdbcType=INTEGER},
+      register_time_ = #{registerTime,jdbcType=BIGINT},
+      page_id_ = #{pageId,jdbcType=BIGINT}
+    where id_ = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

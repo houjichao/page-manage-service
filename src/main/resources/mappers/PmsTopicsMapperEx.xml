@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsTopicsMapper">
+  <!--查询所有的选题-->
+  <select id="queryAllTopics" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pms_topics
+  </select>
+
+  <!--多个查询-->
+  <select id="queryTopicsByIds" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pms_topics WHERE 1=1
+    <if test='ids !=null and ids.size()>0'>
+      and id_ IN
+      <foreach collection="ids" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </if>
+    <if test='ids ==null or ids.size()==0'> and 1=0</if>
+  </select>
+
+</mapper>

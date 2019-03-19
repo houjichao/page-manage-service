@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.page.mapper.PmsUserMapper">
+  <!--查询所有的用户-->
+  <select id="queryAllUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pms_user
+  </select>
+
+  <!--多个查询-->
+  <select id="queryUserByIds" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pms_user WHERE 1=1
+    <if test='ids !=null and ids.size()>0'>
+      and id_ IN
+      <foreach collection="ids" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </if>
+    <if test='ids ==null or ids.size()==0'> and 1=0</if>
+  </select>
+
+  <!---->
+  <select id="checkLoginUserByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from pms_user a
+    where a.login_name_ = #{user.loginName,jdbcType=VARCHAR}
+    and a.status_=1;
+  </select>
+
+</mapper>

@@ -66,25 +66,6 @@ public class PageController {
     @ApiOperation(value = "论文上传", notes = "论文上传")
     @RequestMapping(value = "/upload", method = {RequestMethod.GET, RequestMethod.POST})
     public String importFromExcel(@RequestParam(value = "file") MultipartFile file) {
-        /*long startTime = System.currentTimeMillis();
-        InputStream inputStream = null;
-        try {
-            inputStream = file.getInputStream();
-            try {
-                File writeName = new File(Thread.currentThread().getName()); // 相对路径，如果没有则要建立一个新的output.txt文件
-                writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
-                try (FileWriter writer = new FileWriter(writeName);
-                     BufferedWriter out = new BufferedWriter(writer)
-                ) {
-                    out.write("");
-                    out.flush(); // 把缓存区内容压入文件
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            LOGGER.error("文件读取失败，堆栈信息 {}", e);
-        }*/
         return pageService.uploadFile(file);
     }
 

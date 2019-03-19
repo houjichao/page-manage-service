@@ -1,7 +1,6 @@
 package com.study.page.service;
 
 import com.study.page.model.PmsTopics;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 
@@ -38,5 +37,14 @@ public interface TopicsService {
      * @return
      */
     Boolean delTopics(String id);
+
+
+    /**
+     * 根据教师ID查询选题
+     *
+     * @param teacherId
+     * @return
+     */
+    List<PmsTopics> queryTopicsByTeacher(String teacherId);
 
 }

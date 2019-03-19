@@ -41,4 +41,9 @@ public class TopicsServiceImpl implements TopicsService {
         pmsTopicsMapper.deleteByPrimaryKey(id);
         return true;
     }
+
+    @Override
+    public List<PmsTopics> queryTopicsByTeacher(String teacherId) {
+        return pmsTopicsMapper.queryTopicsByTeacher(teacherId);
+    }
 }

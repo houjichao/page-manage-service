@@ -56,4 +56,11 @@ public class TopicsController {
         return topicsService.queryAllTopics();
     }
 
+
+    @ApiOperation(value = "根据查询选题")
+    @GetMapping(value = "/getByTeacher/{id}")
+    public List<PmsTopics> queryTopicsByTeacher(@PathVariable String teacherId){
+        return null;
+    }
+
 }

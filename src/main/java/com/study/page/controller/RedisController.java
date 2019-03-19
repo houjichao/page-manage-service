@@ -22,13 +22,11 @@ public class RedisController {
         return redisService.mergeKeyValue(key,value);
     }
 
-
     @ApiOperation(value = "修改缓存")
     @PostMapping(value = "/update")
     public Boolean updateCache(@RequestParam String key,@RequestParam String value) {
         return redisService.mergeKeyValue(key, value);
     }
-
 
     @ApiOperation(value = "查询缓存")
     @GetMapping(value = "/get/{key}")

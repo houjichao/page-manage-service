@@ -15,7 +15,7 @@
         from pms_answer_questions where student_id_ = #{studentId,jdbcType=CHAR}
     </select>
 
-    <!--根据学生id查询问题-->
+    <!--根据教师id查询问题-->
     <select id="queryQuestionByTeacherId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

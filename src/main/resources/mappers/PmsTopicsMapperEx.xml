@@ -22,4 +22,12 @@
     <if test='ids ==null or ids.size()==0'> and 1=0</if>
   </select>
 
+
+  <!--根据教师id查询问题-->
+  <select id="queryTopicsByTeacher" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from pms_topics where teacher_id_ = #{teacherId,jdbcType=CHAR}
+  </select>
+
 </mapper>

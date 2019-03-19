@@ -17,12 +17,12 @@ public class PmsTopics {
     private String intro;
 
     /**
-     * 选题来源
+     * 教师编号
      */
     private String teacherId;
 
     /**
-     * 教师编号
+     * 添加时间
      */
     private Long addTime;
 

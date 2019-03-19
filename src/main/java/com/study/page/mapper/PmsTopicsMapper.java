@@ -35,4 +35,13 @@ public interface PmsTopicsMapper {
      * @return
      */
     List<PmsTopics> queryTopicsByIds(@Param(value = "ids") Set<String> ids);
+
+
+    /**
+     * 根据教师ID查询选题
+     *
+     * @param teacherId
+     * @return
+     */
+    List<PmsTopics> queryTopicsByTeacher(@Param(value = "teacherId") String teacherId);
 }

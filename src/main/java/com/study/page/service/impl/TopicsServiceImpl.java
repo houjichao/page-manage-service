@@ -21,8 +21,10 @@ public class TopicsServiceImpl implements TopicsService {
     public String mergeTopics(PmsTopics topics) {
         if (StringUtils.isEmpty(topics.getId())){
             topics.setId(UUID.randomUUID().toString());
+            topics.setAddTime(System.currentTimeMillis());
             pmsTopicsMapper.insert(topics);
         }else{
+            topics.setAddTime(System.currentTimeMillis());
             pmsTopicsMapper.updateByPrimaryKeySelective(topics);
         }
         return topics.getId();

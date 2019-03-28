@@ -87,6 +87,7 @@ public class GlobalResponseHandler extends WebMvcConfigurationSupport implements
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 
     private ResponseEntityExceptionHandler exceptionHandler = new ResponseEntityExceptionHandler() {

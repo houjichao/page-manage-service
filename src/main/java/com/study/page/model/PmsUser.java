@@ -1,6 +1,8 @@
 package com.study.page.model;
 
-public class PmsUser {
+import java.io.Serializable;
+
+public class PmsUser implements Serializable {
     /**
      * 用户表ID，唯一标识
      */

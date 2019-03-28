@@ -1,6 +1,8 @@
 package com.study.page.model;
 
-public class PmsDataBank {
+import java.io.Serializable;
+
+public class PmsDataBank implements Serializable {
     /**
      * 资料文章编号
      */

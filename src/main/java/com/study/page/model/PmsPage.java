@@ -1,6 +1,8 @@
 package com.study.page.model;
 
-public class PmsPage {
+import java.io.Serializable;
+
+public class PmsPage implements Serializable {
     /**
      * 论文编号
      */

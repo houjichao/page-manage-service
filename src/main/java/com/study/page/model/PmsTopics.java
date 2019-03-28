@@ -1,6 +1,8 @@
 package com.study.page.model;
 
-public class PmsTopics {
+import java.io.Serializable;
+
+public class PmsTopics implements Serializable {
     /**
      * 选题编号
      */

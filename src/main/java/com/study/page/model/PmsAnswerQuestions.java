@@ -1,6 +1,8 @@
 package com.study.page.model;
 
-public class PmsAnswerQuestions {
+import java.io.Serializable;
+
+public class PmsAnswerQuestions implements Serializable {
     /**
      * 问题唯一标识
      */

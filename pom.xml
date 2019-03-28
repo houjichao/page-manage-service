@@ -200,8 +200,8 @@
         </dependency>
 
     </dependencies>
-
-    <dependencyManagement>
+	
+	<!-- <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -218,7 +218,8 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement> -->
+    
 
     <build>
         <finalName>${project.artifactId}</finalName>

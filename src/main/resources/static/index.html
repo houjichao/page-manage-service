@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./elementui/index.css">
+    <script src="./elementui/vue.js"></script>
+    <script src="./elementui/vue-router.js"></script>
+    <script src="./elementui/index.js"></script>
+     <script src="./elementui/axios.js"></script>
+    <style>
+        body {
+            background: #EBEEF5;
+            font-family: "Microsoft YaHei", "微软雅黑", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+        }
+    </style>
+</head>
+
+
+<body>
+    <el-container id="app">
+        <el-header>
+            <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" mode="horizontal" router>
+
+                <el-menu-item index="/home">本科毕业论文管理系统</el-menu-item>
+                <el-menu-item index="/login" v-if="user.name==''">登录</el-menu-item>
+                <el-menu-item index="/register" v-if="user.name==''">注册</el-menu-item>
+                <el-menu-item index="/queryAndUpload" v-if="user.name!=''">图片上传与查询</el-menu-item>
+                <el-menu-item index="/admin" v-if="user.role=='admin'">管理员模块</el-menu-item>
+                <el-menu-item v-if="user.name!=''">当前登录用户:{{user.name}}</el-menu-item>
+                <el-menu-item v-if="user.name!=''" @click="exit()">注销</el-menu-item>
+                
+            </el-menu>
+            <el-container>
+                <router-view></router-view>
+            </el-container>
+        </el-header>
+    </el-container>
+</body>
+<script src="./js/login.js"></script>
+<script src="./js/home.js"></script>
+<script src="./js/register.js"></script>
+<script src="./js/queryAndUpload.js"></script>
+<script src="./js/admin.js"></script>
+<script>
+	const eventbus = new Vue()
+    const routes = [
+
+        {path: '/home', component: home },
+        {path: '/login', component: login },
+        {path:'/register',component:register},
+        {path:'/queryAndUpload',component:queryAndUpload},
+        {path:'/admin',component:admin}
+    ]
+    const router = new VueRouter({
+        routes // (缩写) 相当于 routes: routes
+    })
+	
+	eventbus.$on('loginupdate',user=>{
+		app.user = user
+	})
+
+    const app = new Vue({
+        router,
+        data:function(){
+        	return{
+        		user:{
+        			name:'',
+        			role:''
+        		}
+        	}
+        },
+        methods:{
+        	login(user){
+        		this.user=user
+        		alert('1222222222')
+        	},
+        	exit(){
+        		this.user={name:'',role:''}
+        	}
+        }
+    }).$mount('#app')
+    
+    router.replace({path:'/home'})
+  
+</script>
+
+</html>

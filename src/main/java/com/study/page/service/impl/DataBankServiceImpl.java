@@ -25,14 +25,14 @@ public class DataBankServiceImpl implements DataBankService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String mergeData(PmsDataBank dataBank) {
+    public PmsDataBank mergeData(PmsDataBank dataBank) {
         if (StringUtils.isBlank(dataBank.getId())) {
             dataBank.setId(UUID.randomUUID().toString());
             dataBankMapper.insert(dataBank);
         }else{
             dataBankMapper.updateByPrimaryKeySelective(dataBank);
         }
-        return dataBank.getId();
+        return dataBank;
     }
 
     @Override

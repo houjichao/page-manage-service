@@ -14,7 +14,7 @@ public interface DataBankService {
      * @param dataBank
      * @return
      */
-    String mergeData(PmsDataBank dataBank);
+    PmsDataBank mergeData(PmsDataBank dataBank);
 
     /**
      * 根据ID查询文章

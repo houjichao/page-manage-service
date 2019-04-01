@@ -28,14 +28,14 @@ public class PageController {
 
     @ApiOperation(value = "新增论文")
     @PostMapping(value = "/add")
-    public String savePage(@RequestBody PmsPage page) {
+    public PmsPage savePage(@RequestBody PmsPage page) {
         return pageService.mergePage(page);
     }
 
 
     @ApiOperation(value = "修改论文")
     @PostMapping(value = "/update")
-    public String updatePage(@RequestBody PmsPage page) {
+    public PmsPage updatePage(@RequestBody PmsPage page) {
         return pageService.mergePage(page);
     }
 
@@ -48,7 +48,7 @@ public class PageController {
 
     @ApiOperation(value = "论文评分")
     @PostMapping(value = "/updateScore")
-    public String updatePageScore(@RequestBody PmsPage page) {
+    public PmsPage updatePageScore(@RequestBody PmsPage page) {
         return pageService.mergePage(page);
     }
 

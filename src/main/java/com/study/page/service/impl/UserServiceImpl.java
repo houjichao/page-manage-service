@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String mergeUser(PmsUser user) {
+    public PmsUser mergeUser(PmsUser user) {
         //密码两次MD5加密入库
         user.setPassword(MD5Util.computeMD5(user.getPassword()));
         if (StringUtils.isNotBlank(user.getName())) {
@@ -33,15 +33,22 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isBlank(user.getId())) {
             user.setId(UUID.randomUUID().toString());
             userMapper.insert(user);
-        }else{
+        } else {
             userMapper.updateByPrimaryKeySelective(user);
         }
-        return user.getId();
+        return user;
     }
 
     @Override
     public PmsUser queryUserById(String id) {
         return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public PmsUser delUser(String id) {
+        PmsUser pmsUser = userMapper.selectByPrimaryKey(id);
+        userMapper.deleteByPrimaryKey(id);
+        return pmsUser;
     }
 
 }

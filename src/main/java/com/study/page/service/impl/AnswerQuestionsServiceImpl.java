@@ -19,14 +19,14 @@ public class AnswerQuestionsServiceImpl implements AnswerQuestionsService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String mergeQuestion(PmsAnswerQuestions pmsAnswerQuestions) {
+    public PmsAnswerQuestions mergeQuestion(PmsAnswerQuestions pmsAnswerQuestions) {
         if (StringUtils.isBlank(pmsAnswerQuestions.getId())) {
             pmsAnswerQuestions.setId(UUID.randomUUID().toString());
             pmsAnswerQuestionsMapper.insert(pmsAnswerQuestions);
-        }else{
+        } else {
             pmsAnswerQuestionsMapper.updateByPrimaryKeySelective(pmsAnswerQuestions);
         }
-        return pmsAnswerQuestions.getId();
+        return pmsAnswerQuestions;
     }
 
     @Override

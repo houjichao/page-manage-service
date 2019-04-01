@@ -42,7 +42,6 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     public JSONObject loginUserAuth(PmsUser user) {
         JSONObject result = new JSONObject();
         //根据登录用户验证用户
-        long currentTime = System.currentTimeMillis();
         PmsUser pmsUser = pmsUserMapper.checkLoginUserByName(user);
         //----------用户存在性校验
         if (null != pmsUser) {
@@ -86,7 +85,6 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         //将token绑定用户数据存入缓存
         redisTemplate.opsForHash().putAll(redisKey, result);
         redisTemplate.expire(redisKey, 30, TimeUnit.MINUTES);
-
         //移除记录错误次数
         pswErrorCountMap.remove(user.getId());
     }
@@ -108,7 +106,6 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         JSONObject responseData = new JSONObject();
         String key = TokenUtil.ACCESS_REDISKEY + TokenUtil.TOKEN_PREFIX + tokenKey;
         Long expire = redisTemplate.getExpire(key);
-        //Object tokenid = redisTemplate.opsForHash().get(key, TokenUtil.USER_TOKEN_NAME);
         if (null != expire && expire > 0) {
             //有效的token
             responseData.put("result", "success");

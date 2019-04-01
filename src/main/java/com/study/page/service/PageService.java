@@ -13,7 +13,7 @@ public interface PageService {
      * @param page
      * @return
      */
-    String mergePage(PmsPage page);
+    PmsPage mergePage(PmsPage page);
 
     /**
      * 根据ID查询论文

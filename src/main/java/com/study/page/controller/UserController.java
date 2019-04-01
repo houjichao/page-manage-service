@@ -20,14 +20,14 @@ public class UserController {
 
     @ApiOperation(value = "用户注册")
     @PostMapping(value = "/add")
-    public String saveUser(@RequestBody PmsUser user) {
+    public PmsUser saveUser(@RequestBody PmsUser user) {
         return userService.mergeUser(user);
     }
 
 
     @ApiOperation(value = "用户修改")
     @PostMapping(value = "/update")
-    public String updateUser(@RequestBody PmsUser user) {
+    public PmsUser updateUser(@RequestBody PmsUser user) {
         return userService.mergeUser(user);
     }
 
@@ -36,6 +36,13 @@ public class UserController {
     @GetMapping(value = "/get")
     public PmsUser queryUser(@PathVariable String id) {
         return userService.queryUserById(id);
+    }
+
+
+    @ApiOperation(value = "用户删除")
+    @DeleteMapping(value = "/del/{id}")
+    public PmsUser delPage(String id){
+        return userService.delUser(id);
     }
 
 }

@@ -9,7 +9,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    String mergeUser(PmsUser user);
+    PmsUser mergeUser(PmsUser user);
 
     /**
      * 查询用户
@@ -18,5 +18,13 @@ public interface UserService {
      * @return
      */
     PmsUser queryUserById(String id);
+
+    /**
+     * 删除用户
+     *
+     * @param id
+     * @return
+     */
+    PmsUser delUser(String id);
 
 }

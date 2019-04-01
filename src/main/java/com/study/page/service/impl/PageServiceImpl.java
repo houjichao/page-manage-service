@@ -29,14 +29,14 @@ public class PageServiceImpl implements PageService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String mergePage(PmsPage page) {
+    public PmsPage mergePage(PmsPage page) {
         if (StringUtils.isBlank(page.getId())) {
             page.setId(UUID.randomUUID().toString());
             pmsPageMapper.insert(page);
         }else{
             pmsPageMapper.updateByPrimaryKeySelective(page);
         }
-        return page.getId();
+        return page;
     }
 
     @Override

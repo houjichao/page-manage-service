@@ -23,14 +23,14 @@ public class DataBankController {
 
     @ApiOperation(value = "新增资料文章")
     @PostMapping(value = "/add")
-    public String saveData(@RequestBody PmsDataBank dataBank) {
+    public PmsDataBank saveData(@RequestBody PmsDataBank dataBank) {
         return dataBankService.mergeData(dataBank);
     }
 
 
     @ApiOperation(value = "修改资料文章")
     @PostMapping(value = "/update")
-    public String updateData(@RequestBody PmsDataBank pmsDataBank) {
+    public PmsDataBank updateData(@RequestBody PmsDataBank pmsDataBank) {
         return dataBankService.mergeData(pmsDataBank);
     }
 

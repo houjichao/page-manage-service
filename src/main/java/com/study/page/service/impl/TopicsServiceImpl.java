@@ -18,7 +18,7 @@ public class TopicsServiceImpl implements TopicsService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String mergeTopics(PmsTopics topics) {
+    public PmsTopics mergeTopics(PmsTopics topics) {
         if (StringUtils.isEmpty(topics.getId())){
             topics.setId(UUID.randomUUID().toString());
             topics.setAddTime(System.currentTimeMillis());
@@ -27,7 +27,7 @@ public class TopicsServiceImpl implements TopicsService {
             topics.setAddTime(System.currentTimeMillis());
             pmsTopicsMapper.updateByPrimaryKeySelective(topics);
         }
-        return topics.getId();
+        return topics;
     }
 
     @Override

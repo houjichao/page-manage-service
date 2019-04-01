@@ -25,14 +25,14 @@ public class TopicsController {
 
     @ApiOperation(value = "新增选题")
     @PostMapping(value = "/add")
-    public String saveTopics(@RequestBody PmsTopics topics) {
+    public PmsTopics saveTopics(@RequestBody PmsTopics topics) {
         return topicsService.mergeTopics(topics);
     }
 
 
     @ApiOperation(value = "修改选题")
     @PostMapping(value = "/update")
-    public String updateTopics(@RequestBody PmsTopics topics) {
+    public PmsTopics updateTopics(@RequestBody PmsTopics topics) {
         return topicsService.mergeTopics(topics);
     }
 

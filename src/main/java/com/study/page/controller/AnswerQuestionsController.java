@@ -20,13 +20,13 @@ public class AnswerQuestionsController {
 
     @ApiOperation(value = "新增问题")
     @PostMapping(value = "/add")
-    public String saveQuestion(@RequestBody PmsAnswerQuestions answerQuestions) {
+    public PmsAnswerQuestions saveQuestion(@RequestBody PmsAnswerQuestions answerQuestions) {
         return answerQuestionsService.mergeQuestion(answerQuestions);
     }
 
     @ApiOperation(value = "修改问题，回答")
     @PostMapping(value = "/update")
-    public String updateQuestion(@RequestBody PmsAnswerQuestions answerQuestions) {
+    public PmsAnswerQuestions updateQuestion(@RequestBody PmsAnswerQuestions answerQuestions) {
         return answerQuestionsService.mergeQuestion(answerQuestions);
     }
 

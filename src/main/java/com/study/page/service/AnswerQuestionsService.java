@@ -11,7 +11,7 @@ public interface AnswerQuestionsService {
      * @param pmsAnswerQuestions
      * @return
      */
-    String mergeQuestion(PmsAnswerQuestions pmsAnswerQuestions);
+    PmsAnswerQuestions mergeQuestion(PmsAnswerQuestions pmsAnswerQuestions);
 
     /**
      * 根据ID查询问题

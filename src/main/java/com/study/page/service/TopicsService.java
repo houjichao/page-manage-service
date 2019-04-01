@@ -11,7 +11,7 @@ public interface TopicsService {
      * @param topics
      * @return
      */
-    String mergeTopics(PmsTopics topics);
+    PmsTopics mergeTopics(PmsTopics topics);
 
     /**
      * 根据ID查询选题

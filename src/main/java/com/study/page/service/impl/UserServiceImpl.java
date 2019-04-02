@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -49,6 +50,11 @@ public class UserServiceImpl implements UserService {
         PmsUser pmsUser = userMapper.selectByPrimaryKey(id);
         userMapper.deleteByPrimaryKey(id);
         return pmsUser;
+    }
+
+    @Override
+    public List<PmsUser> queryUserByType(Integer type) {
+        return userMapper.queryUserByType(type);
     }
 
 }

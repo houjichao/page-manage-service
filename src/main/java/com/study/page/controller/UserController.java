@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api("用户服务")
 @RestController
 @RequestMapping("/user")
@@ -33,7 +35,7 @@ public class UserController {
 
 
     @ApiOperation(value = "用户查询")
-    @GetMapping(value = "/get")
+    @GetMapping(value = "/get/{id}")
     public PmsUser queryUser(@PathVariable String id) {
         return userService.queryUserById(id);
     }
@@ -43,6 +45,13 @@ public class UserController {
     @DeleteMapping(value = "/del/{id}")
     public PmsUser delPage(String id){
         return userService.delUser(id);
+    }
+
+
+    @ApiOperation(value = "根据用户类型查询用户集合")
+    @GetMapping(value = "/getByType/{userType}")
+    public List<PmsUser> queryUserByType(Integer userType){
+        return userService.queryUserByType(userType);
     }
 
 }

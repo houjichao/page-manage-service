@@ -37,5 +37,17 @@ public interface PmsUserMapper {
     List<PmsUser> queryUserByIds(@Param(value = "ids") Set<String> ids);
 
 
+    /**
+     *
+     *
+     * @param pmsUser
+     * @return
+     */
     PmsUser  checkLoginUserByName(@Param("user") PmsUser pmsUser);
+
+    /**
+     *
+     *
+     */
+    List<PmsUser> queryUserByType(@Param(value = "userType") Integer userType);
 }

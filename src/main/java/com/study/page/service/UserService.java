@@ -2,6 +2,8 @@ package com.study.page.service;
 
 import com.study.page.model.PmsUser;
 
+import java.util.List;
+
 public interface UserService {
     /**
      * 保存、更新用户
@@ -26,5 +28,14 @@ public interface UserService {
      * @return
      */
     PmsUser delUser(String id);
+
+
+    /**
+     * 根据用户
+     *
+     * @param type
+     * @return
+     */
+    List<PmsUser> queryUserByType(Integer type);
 
 }

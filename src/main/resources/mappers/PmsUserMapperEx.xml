@@ -31,4 +31,11 @@
     and a.status_=1;
   </select>
 
+  <select id="queryUserByType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from pms_user
+    where a.user_type_ = #{userType,jdbcType=INTEGER}
+  </select>
+
 </mapper>
